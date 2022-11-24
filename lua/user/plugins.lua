@@ -57,6 +57,49 @@ return packer.startup(function(use)
   use { "goolord/alpha-nvim", commit = "0bb6fc0646bcd1cdb4639737a1cee8d6e08bcc31" }
 	use {"folke/which-key.nvim"}
 
+-- USER START 
+-- snippets:
+
+require("luasnip/loaders/from_vscode").load { paths = { "~/.config/nvim/snippets/react_snippets" } }
+-- plugins
+  use 'MunifTanjim/prettier.nvim'
+  use 'ggandor/leap.nvim'
+  
+  use "j-hui/fidget.nvim"
+  use("simrat39/rust-tools.nvim")
+  local rt = require("rust-tools")
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+  },
+})
+  -- rt.setup({
+  --   server = {
+  --     cmd = { "rustup", "run", "stable", os.getenv "HOME" .. "/.local/bin/rust-analyzer" },
+  --     --cmd = {  "ra-multiplex/target/release/ra-multiplex-server" },
+  --     on_attach = require("user.lsp.handlers").on_attach,
+  --     capabilities = require("user.lsp.handlers").capabilities,
+  --
+  --     settings = {
+  --       ["rust-analyzer"] = {
+  --         lens = {
+  --           enable = true,
+  --         },
+  --         checkOnSave = {
+  --           command = "clippy",
+  --         },
+  --       },
+  --     },
+  --   },
+  -- })
+-- USER END 
+
+
 	-- Colorschemes
   use { "folke/tokyonight.nvim", commit = "66bfc2e8f754869c7b651f3f47a2ee56ae557764" }
   use { "lunarvim/darkplus.nvim", commit = "13ef9daad28d3cf6c5e793acfc16ddbf456e1c83" }
