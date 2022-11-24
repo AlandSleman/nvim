@@ -68,3 +68,23 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
+-- USER START
+
+keymap("n", "p", '"0p', opts)
+keymap("n", "<Leader>p", 'p', opts)
+keymap("n", "<Leader>o", 'o<Esc>"0p', opts)
+-- leap
+keymap("n", "<Leader>s", 's', opts)
+keymap("n", "<Leader>S", 'S', opts)
+
+keymap("n", "s", '<Plug>(leap-forward-to)', opts)
+keymap("n", "S", '<Plug>(leap-backward-to)', opts)
+
+keymap("n", "gd", '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+vim.api.nvim_set_hl(0, 'LeapBackdrop', { fg = 'red' })
+keymap("n", "<C-l>", ":noh<CR>", opts)
+
+keymap("x", "p", '"0p', opts)
+keymap("x", "<Leader>p", 'p', opts)
+keymap("i", "<C-c>", "<CMD>w<CR><ESC><cr>", opts)
+
