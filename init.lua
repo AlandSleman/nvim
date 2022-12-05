@@ -21,3 +21,4 @@ require "user.whichkey"
 require "user.autocommands"
 
 require "user.fidget"
+require "user.copilot"

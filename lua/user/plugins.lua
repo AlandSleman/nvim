@@ -62,6 +62,17 @@ return packer.startup(function(use)
 
 require("luasnip/loaders/from_vscode").load { paths = { "~/.config/nvim/snippets/react_snippets" } }
 -- plugins
+	use {"github/copilot.vim",commit="ad102c7a58356414f18680f60c2298246e41ccea"}
+
+  use({
+    "Pocco81/auto-save.nvim",
+    config = function()
+      require("auto-save").setup {
+        -- your config goes here
+        -- or just leave it empty :)
+      }
+    end,
+  })
   use 'MunifTanjim/prettier.nvim'
   use 'ggandor/leap.nvim'
   
