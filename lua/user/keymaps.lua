@@ -70,6 +70,11 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- USER START
 
+keymap("n", "<C-d>", '<C-d>zz', opts)
+keymap("n", "<C-u>", '<C-u>zz', opts)
+keymap("n", "n", 'nzzzv', opts)
+keymap("n", "N", 'Nzzzv', opts)
+
 keymap("n", "p", '"0p', opts)
 keymap("n", "<Leader>p", 'p', opts)
 keymap("n", "<Leader>o", 'o<Esc>"0p', opts)
