@@ -98,6 +98,10 @@ cmp.setup {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
       -- Kind icons
+ if entry.source.name == "copilot" then
+        vim_item.kind = icons.git.Octoface
+        vim_item.kind_hl_group = "CmpItemKindCopilot"
+      end
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
       -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       vim_item.menu = ({
@@ -108,6 +112,7 @@ cmp.setup {
       })[entry.source.name]
       return vim_item
     end,
+
   },
   sources = {
     { name = "nvim_lsp" },
