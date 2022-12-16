@@ -63,66 +63,28 @@ return packer.startup(function(use)
 require("luasnip/loaders/from_vscode").load { paths = { "~/.config/nvim/snippets/react_snippets" } }
 -- plugins
 	-- use {"github/copilot.vim",commit="ad102c7a58356414f18680f60c2298246e41ccea"}
+use {
+  'samodostal/copilot-client.lua',
+  requires = {
+    'zbirenbaum/copilot.lua', -- requires copilot.lua and plenary.nvim
+    'nvim-lua/plenary.nvim'
+  },
+}
+require('copilot').setup {
+  cmp = {
+    enabled = false, -- no need for cmp
+  },
+}
 
-use {
-  "zbirenbaum/copilot.lua",
-  event = "InsertEnter",
-  config = function ()
-    vim.schedule(function()
-      require("copilot").setup({
-  panel = {
-    enabled = true,
-    auto_refresh = false,
-    keymap = {
-      jump_prev = "[[",
-      jump_next = "]]",
-      accept = "<CR>",
-      refresh = "gr",
-      open = "<M-CR>"
-    },
+require('copilot-client').setup {
+  mapping = {
+    accept = '<CR>',
+    -- Next and previos suggestions to be added
+    -- suggest_next = '<C-n>',
+    -- suggest_prev = '<C-p>',
   },
-  suggestion = {
-    enabled = true,
-    auto_trigger = false,
-    debounce = 75,
-    keymap = {
-     accept = "<M-l>",
-     next = "<M-]>",
-     prev = "<M-[>",
-     dismiss = "<C-]>",
-    },
-  },
-  filetypes = {
-    yaml = false,
-    markdown = false,
-    help = false,
-    gitcommit = false,
-    gitrebase = false,
-    hgcommit = false,
-    svn = false,
-    cvs = false,
-    ["."] = false,
-  },
-  copilot_node_command = 'node', -- Node.js version must be > 16.x
-  server_opts_overrides = {},
-})
-    end)
-  end,
 }
-use {
-  "zbirenbaum/copilot-cmp",
-  after = { "copilot.lua" },
-  config = function ()
-    require("copilot_cmp").setup({
-  method = "getCompletionsCycling",
-  formatters = {
-    label = require("copilot_cmp.format").format_label_text,
-    insert_text = require("copilot_cmp.format").format_insert_text,
-    preview = require("copilot_cmp.format").deindent,
-  },
-})
-  end
-}
+
 
   use({
     "Pocco81/auto-save.nvim",
