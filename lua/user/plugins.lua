@@ -63,27 +63,6 @@ return packer.startup(function(use)
 require("luasnip/loaders/from_vscode").load { paths = { "~/.config/nvim/snippets/react_snippets" } }
 -- plugins
 	-- use {"github/copilot.vim",commit="ad102c7a58356414f18680f60c2298246e41ccea"}
-use {
-  'samodostal/copilot-client.lua',
-  requires = {
-    'zbirenbaum/copilot.lua', -- requires copilot.lua and plenary.nvim
-    'nvim-lua/plenary.nvim'
-  },
-}
-require('copilot').setup {
-  cmp = {
-    enabled = false, -- no need for cmp
-  },
-}
-
-require('copilot-client').setup {
-  mapping = {
-    accept = '<CR>',
-    -- Next and previos suggestions to be added
-    -- suggest_next = '<C-n>',
-    -- suggest_prev = '<C-p>',
-  },
-}
 
 
   use({
