@@ -58,13 +58,62 @@ return packer.startup(function(use)
 	use {"folke/which-key.nvim"}
 
 -- USER START 
+
+  -- prime video
+
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+vim.opt.smartindent = true
+
+vim.opt.wrap = false
+
+-- vim.opt.swapfile = false
+-- vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+-- vim.opt.undofile = true
+
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+vim.opt.termguicolors = true
+
+vim.opt.scrolloff = 22
+vim.opt.updatetime = 50
+
+vim.opt.colorcolumn = "80"
+
+  use 'mbbill/undotree'
+-- end 
 -- snippets:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 require("luasnip/loaders/from_vscode").load { paths = { "~/.config/nvim/snippets/react_snippets" } }
 -- plugins
 	-- use {"github/copilot.vim",commit="ad102c7a58356414f18680f60c2298246e41ccea"}
 
 
+	use {"wakatime/vim-wakatime"}
   use({
     "Pocco81/auto-save.nvim",
     config = function()
